@@ -23,8 +23,7 @@ def main():
     data_loader_test = dataset.MyDataset(batch_size).load_test_data()
 
     ########### 训练和评价 ##########
-    train.train_and_test().train_epoch(num_epochs, learning_rate, class_size, data_loader_train, data_loader_test, log_interval)
-
+    train.train_and_test(num_epochs, learning_rate, class_size, data_loader_train, data_loader_test, log_interval).train_epoch()
 
 if __name__ == "__main__":
     main()
