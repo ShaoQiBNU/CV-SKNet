@@ -119,7 +119,8 @@ class SKNet(nn.Module):
 
         super(SKNet, self).__init__()
         self.inplanes=64
-        self.conv=nn.Sequential(nn.Conv2d(3, 64, 7, 2, 3, bias=False),
+        ## mnist是28*28*1，所以此处的input channels为1
+        self.conv=nn.Sequential(nn.Conv2d(1, 64, 7, 2, 3, bias=False),
                                 nn.BatchNorm2d(64),
                                 nn.ReLU(inplace=True))
 
