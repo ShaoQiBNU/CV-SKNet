@@ -5,9 +5,10 @@ from torch.utils.data import Dataset
 
 class MyDataset(Dataset):
 
-    def __init__(self, batch_size):
+    def __init__(self, train_batch_size, val_batch_size):
 
-        self.batch_size = batch_size
+        self.train_batch_size = train_batch_size
+        self.val_batch_size = val_batch_size
 
         ######### set data transform ###########
         self.transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=(0.5,), std=(0.5,))])
@@ -20,7 +21,7 @@ class MyDataset(Dataset):
     def load_train_data(self):
 
         ######### data loader ###########
-        data_loader_train = torch.utils.data.DataLoader(dataset=self.data_train, batch_size=self.batch_size, shuffle=True)
+        data_loader_train = torch.utils.data.DataLoader(dataset=self.data_train, batch_size=self.train_batch_size, shuffle=True)
 
         return data_loader_train
 
@@ -28,6 +29,6 @@ class MyDataset(Dataset):
     def load_test_data(self):
 
         ######### data loader ###########
-        data_loader_test = torch.utils.data.DataLoader(dataset=self.data_test, batch_size=self.batch_size)
+        data_loader_test = torch.utils.data.DataLoader(dataset=self.data_test, batch_size=self.val_batch_size)
 
         return data_loader_test
